@@ -12,20 +12,23 @@
         <image src='/images/banner/iqiyi.png' class='swiper-image'></image>
     </swiper-item>
   </swiper>
-
-  <view class='post-content'>
-    <view class='user-avatar-date'>
-      <image class='post-avatar' src="{{avatar}}"></image>
-      <text class='post-date'>{{date}}</text>
+  <!-- block 标签并没有实际作用，相当于大括号的作用 需要把 循环的组件引起来  -->
+  <!-- wx:for-item=""  指明循环的数据的子元素 -->
+  <block wx:for="{{post_data}}" wx:for-item="item">
+    <view class='post-content'>
+      <view class='user-avatar-date'>
+        <image class='post-avatar' src="{{item.avatar}}"></image>
+        <text class='post-date'>{{item.date}}</text>
+      </view>
+      <text class='post-title'>{{item.title}}</text>
+      <image class='post-image' src="{{item.imgSrc}}" mode="aspectFill"></image>
+      <text class='post-text'>{{item.content}}</text>
+      <view class='post-like'>
+        <image class='post-like-image' src='/images/icon/none-star.png'></image>
+        <text class='post-like-font'>{{item.collection}}</text>
+        <image class='post-like-image' src='/images/icon/view.png'></image>
+        <text class='post-like-font' >{{item.reading}}</text>
+      </view>
     </view>
-    <text class='post-title'>{{title}}</text>
-    <image class='post-image' src="{{imgSrc}}"></image>
-    <text class='post-text'>{{content}}</text>
-    <view class='post-like'>
-      <image class='post-like-image' src='/images/icon/none-star.png'></image>
-      <text class='post-like-font'>{{collection}}</text>
-      <image class='post-like-image' src='/images/icon/view.png'></image>
-      <text class='post-like-font' >{{reading}}</text>
-    </view>
-  </view>
+  </block>
 </view>
