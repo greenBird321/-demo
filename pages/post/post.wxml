@@ -1,0 +1,31 @@
+<view>
+  <swiper vertical='{{false}}' indicator-dots="true" autoplay="true" interval="5000">
+    <swiper-item>
+      <image src='/images/banner/wx.png' class='swiper-image'></image>
+    </swiper-item>
+
+    <swiper-item>
+       <image src='/images/banner/vr.png' class='swiper-image'></image>
+    </swiper-item>
+
+    <swiper-item>
+        <image src='/images/banner/iqiyi.png' class='swiper-image'></image>
+    </swiper-item>
+  </swiper>
+
+  <view class='post-content'>
+    <view class='user-avatar-date'>
+      <image class='post-avatar' src="{{avatar}}"></image>
+      <text class='post-date'>{{date}}</text>
+    </view>
+    <text class='post-title'>{{title}}</text>
+    <image class='post-image' src="{{imgSrc}}"></image>
+    <text class='post-text'>{{content}}</text>
+    <view class='post-like'>
+      <image class='post-like-image' src='/images/icon/none-star.png'></image>
+      <text class='post-like-font'>{{collection}}</text>
+      <image class='post-like-image' src='/images/icon/view.png'></image>
+      <text class='post-like-font' >{{reading}}</text>
+    </view>
+  </view>
+</view>
