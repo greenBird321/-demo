@@ -1,0 +1,18 @@
+<!-- 模板中 一定要给模板定义 name 属性 在引用的时候需要此属性标示-->
+<template name='postItem'>
+  <view class='post-content'>
+    <view class='user-avatar-date'>
+      <image class='post-avatar' src="{{avatar}}"></image>
+      <text class='post-date'>{{date}}</text>
+    </view>
+    <text class='post-title'>{{title}}</text>
+    <image class='post-image' src="{{imgSrc}}" mode="aspectFill"></image>
+    <text class='post-text'>{{content}}</text>
+    <view class='post-like'>
+      <image class='post-like-image' src='/images/icon/none-star.png'></image>
+      <text class='post-like-font'>{{collection}}</text>
+      <image class='post-like-image' src='/images/icon/view.png'></image>
+      <text class='post-like-font'>{{reading}}</text>
+    </view>
+  </view>
+</template>

@@ -1,3 +1,6 @@
+<!-- 引入 template 模板的相对路径 -->
+<import src="post-item/post-item-template.wxml" />
+
 <view>
   <swiper vertical='{{false}}' indicator-dots="true" autoplay="true" interval="5000">
     <swiper-item>
@@ -5,11 +8,11 @@
     </swiper-item>
 
     <swiper-item>
-       <image src='/images/banner/vr.png' class='swiper-image'></image>
+      <image src='/images/banner/vr.png' class='swiper-image'></image>
     </swiper-item>
 
     <swiper-item>
-        <image src='/images/banner/iqiyi.png' class='swiper-image'></image>
+      <image src='/images/banner/iqiyi.png' class='swiper-image'></image>
     </swiper-item>
   </swiper>
   <!-- block 标签并没有实际作用，相当于大括号的作用 需要把 循环的组件引起来  -->
@@ -17,20 +20,12 @@
   <!-- wx:for-index="" 指明循环的元素index -->
   <!-- bindtap 与 catchtap 都是绑定事件， 区别 bindtap会走冒泡事件  catchtap会阻止冒泡事件 -->
   <block wx:for="{{post_data}}" wx:for-item="item" wx:for-index='idx'>
-    <view class='post-content'>
-      <view class='user-avatar-date'>
-        <image class='post-avatar' src="{{item.avatar}}"></image>
-        <text class='post-date'>{{item.date}}  {{index}}</text>
-      </view>
-      <text class='post-title'>{{item.title}}</text>
-      <image class='post-image' src="{{item.imgSrc}}" mode="aspectFill"></image>
-      <text class='post-text'>{{item.content}}</text>
-      <view class='post-like'>
-        <image class='post-like-image' src='/images/icon/none-star.png'></image>
-        <text class='post-like-font'>{{item.collection}}</text>
-        <image class='post-like-image' src='/images/icon/view.png'></image>
-        <text class='post-like-font' >{{item.reading}}</text>
-      </view>
+    <!-- data-自定义名称 可以自定义数据 传递到js中使用 -->
+    <view catchtap="templateOnTap" data-postId="{{item.postId}}">
+      <!-- 模板的使用 以及数据的传入 is 需要传入 就是模板的 name 属性-->
+      <!-- item 代表的是数组中的每一个对象， ... 是把对象中的属性平铺，在使用模板的时候就不需要用item. 这样的方式去调用 可直接调用 对象中的属性  -->
+      <!-- template 是个占位标签 并没有实际作用 -->
+      <template is="postItem" data="{{...item}}"  />
     </view>
   </block>
 </view>
