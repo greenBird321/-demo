@@ -14,11 +14,13 @@
   </swiper>
   <!-- block 标签并没有实际作用，相当于大括号的作用 需要把 循环的组件引起来  -->
   <!-- wx:for-item=""  指明循环的数据的子元素 -->
-  <block wx:for="{{post_data}}" wx:for-item="item">
+  <!-- wx:for-index="" 指明循环的元素index -->
+  <!-- bindtap 与 catchtap 都是绑定事件， 区别 bindtap会走冒泡事件  catchtap会阻止冒泡事件 -->
+  <block wx:for="{{post_data}}" wx:for-item="item" wx:for-index='idx'>
     <view class='post-content'>
       <view class='user-avatar-date'>
         <image class='post-avatar' src="{{item.avatar}}"></image>
-        <text class='post-date'>{{item.date}}</text>
+        <text class='post-date'>{{item.date}}  {{index}}</text>
       </view>
       <text class='post-title'>{{item.title}}</text>
       <image class='post-image' src="{{item.imgSrc}}" mode="aspectFill"></image>
