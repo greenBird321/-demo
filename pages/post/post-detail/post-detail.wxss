@@ -43,9 +43,9 @@
 }
 
 .share-btn{
-  margin-right: 30rpx;
+  /* margin-right: 30rpx; */
   vertical-align: middle;
-  margin-left: 80rpx;
+  margin-left: 50rpx;
 }
 
 .tool {

@@ -1,7 +1,8 @@
 <!-- 先静后动，先样式后数据 -->
 <view class='detailContainer'>
   <image  catchtap='onHeadImageTap' data-imageInfo="{{ postData.headImgSrc }}"  class='head-image' src="{{postData.headImgSrc}}"></image>
-  <image class='music-icon' src='/images/music/music-start.png'></image>
+  <!-- 使用数据绑定的方式切换显示的图片  -->
+  <image catchtap='onMusicTap' class='music-icon' src="{{ playMusic? '/images/music/music-stop.png': '/images/music/music-start.png'}}"></image>
   <view class='author-date'>
     <image class='avatar' src="{{postData.avatar}}"></image>
     <text class='author'>{{ postData.author }}</text>

@@ -7,7 +7,8 @@ Page({
    */
   data: {
     shareBtn: 'mini',
-    btnType: 'primary'
+    btnType: 'primary',
+    playMusic: false
   },
 
   /**
@@ -94,7 +95,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: res => {
-    if (res.from == 'button'){
+    if (res.from == 'button') {
       // 来自页面内抓发按钮
       console.log(res.target)
     }
@@ -135,6 +136,31 @@ Page({
    */
   onShareTap: function (event) {
     this.onShareAppMessage()
+  },
+
+  /**
+   * 用户点击音乐播放按钮
+   */
+  onMusicTap: function(event) {
+    var isPlay = this.data.playMusic
+    if (isPlay) {
+      wx.pauseBackgroundAudio()
+      this.setData({
+        playMusic: false
+      })
+    } else {
+      wx.playBackgroundAudio({
+        // 音乐源
+        dataUrl: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+        // 音乐标题
+        title: '此时此刻',
+        // 音乐封面
+        coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+      })
+      this.setData({
+        playMusic: true
+      })
+    }
   }
 
 })  
