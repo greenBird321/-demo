@@ -42,6 +42,12 @@
   font-size: 40rpx;
 }
 
+.share-btn{
+  margin-right: 30rpx;
+  vertical-align: middle;
+  margin-left: 80rpx;
+}
+
 .tool {
   margin-top: 20rpx;
 }
