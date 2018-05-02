@@ -1,14 +1,14 @@
 <!-- 先静后动，先样式后数据 -->
 <view class='detailContainer'>
-  <image class='head-image' src='/images/post/crab.png'></image>
+  <image  catchtap='onHeadImageTap' data-imageInfo="{{ postData.headImgSrc }}"  class='head-image' src="{{postData.headImgSrc}}"></image>
   <image class='music-icon' src='/images/music/music-start.png'></image>
   <view class='author-date'>
-    <image class='avatar' src='/images/avatar/1.png'></image>
-    <text class='author'>作者1</text>
+    <image class='avatar' src="{{postData.avatar}}"></image>
+    <text class='author'>{{ postData.author }}</text>
     <text class='const-text'>发表于</text>
-    <text class='author'>17分钟前</text>
+    <text class='author'>{{ postData.dateTime }}</text>
   </view>
-  <text class='title'>这是文章标题</text>
+  <text class='title'>{{ postData.title }}</text>
   <view class='tool'>
     <view class='circle-img'>
       <image src='/images/icon/collection.png'></image>
@@ -17,5 +17,5 @@
     <!-- 横线 -->
     <view class='horizon'></view>
   </view>
-  <text class='detail'>这里是文章的详细内容11122222</text>
+  <text class='detail'>{{ postData.detail }}</text>
 </view>

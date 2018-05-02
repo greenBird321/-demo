@@ -71,9 +71,9 @@ Page({
   templateOnTap: function(event){
     // console.log(event)
     var postId = event.currentTarget.dataset.postid
-    // console.log(postId)
     wx.navigateTo({
-      url: 'post-detail/post-detail',
+      // 向 post-detail 传递参数 在app的url后拼接 ? xxx= 
+      url: 'post-detail/post-detail?postId=' + postId,
     })
   }
 })

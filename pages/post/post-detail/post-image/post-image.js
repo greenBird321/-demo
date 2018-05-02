@@ -1,5 +1,3 @@
-var postsData = require('../../../data/posts-data.js');
-
 Page({
 
   /**
@@ -13,14 +11,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var postId = options.postId
-    var postData = postsData.postList[postId]
-    // 数据绑定
+    var imageSrc = options.src
     this.setData({
-      postData : postData
+      imageSrc : imageSrc
     })
-    // 持久化保存数据
-    wx.setStorageSync('key', "这是一个测试")
   },
 
   /**
@@ -70,16 +64,5 @@ Page({
    */
   onShareAppMessage: function () {
     
-  },
-
-  /**
-   * 用户点击文章详情头图的时候触发点击事件
-   */
-  onHeadImageTap: function(event) {
-    // console.log(event.currentTarget.dataset.imageinfo)
-    var imageSrc = event.currentTarget.dataset.imageinfo
-    wx.navigateTo({
-      url: 'post-image/post-image?src=' + imageSrc,
-    })
   }
 })

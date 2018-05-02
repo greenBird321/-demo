@@ -1,0 +1,3 @@
+<view class='imageContainer'>
+  <image class='image'  src="{{ imageSrc }}" mode='aspectFit'></image>
+</view>
