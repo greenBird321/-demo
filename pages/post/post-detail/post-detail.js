@@ -8,7 +8,11 @@ Page({
   data: {
     shareBtn: 'mini',
     btnType: 'primary',
-    playMusic: false
+    playMusic: false,
+    //  动画数据
+    animationData: {},
+    // 旋转角度
+    rotateCount: 0
   },
 
   /**
@@ -51,35 +55,35 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
 
   },
 
@@ -87,7 +91,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
 
   },
 
@@ -141,13 +145,16 @@ Page({
   /**
    * 用户点击音乐播放按钮
    */
-  onMusicTap: function(event) {
+  onMusicTap: function (event) {
     var isPlay = this.data.playMusic
     if (isPlay) {
+      clearInterval(this.data.animationIntervalId)
       wx.pauseBackgroundAudio()
       this.setData({
-        playMusic: false
+        playMusic: false,
+        animationIntervalId: null
       })
+
     } else {
       wx.playBackgroundAudio({
         // 音乐源
@@ -160,6 +167,22 @@ Page({
       this.setData({
         playMusic: true
       })
+      var that = this
+      var animation = wx.createAnimation({
+        duration: 100,
+        // 匀速
+        timingFunction: 'linear'
+      })
+      var animationIntervalId  = setInterval(function () {
+        animation.rotate((++that.data.rotateCount) * 2).step()
+        that.setData({
+          animationData: animation.export()
+        })
+      }, 100)
+      // this.animation = animation
+      this.setData({
+        animationIntervalId: animationIntervalId
+      })  
     }
   }
 
