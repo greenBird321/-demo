@@ -1,3 +1,3 @@
 <view class='imageContainer'>
-  <image class='image'  src="{{ imageSrc }}" mode='aspectFit'></image>
+  <image class='image' catchlongpress='onLongTap'  src="{{ imageSrc }}" mode='aspectFit'></image>
 </view>

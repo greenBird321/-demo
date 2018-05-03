@@ -64,5 +64,26 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  /**
+   * 用户长时间按压图片触发 应该把图片的src 传递过来 但是由于没有线上资源只能使用假图片
+   */
+  onLongTap:function(event){
+      wx.downloadFile({
+        url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png',
+        success: function (res) {
+          if (res.statusCode == 200){
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success: function (result) {
+                  wx.showToast({
+                    title: '图片保存成功',
+                  })
+              }
+            })  
+          }
+        }
+      })
   }
 })
