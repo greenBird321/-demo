@@ -49,6 +49,21 @@ Page({
       collectedValue[postId] = false
       wx.setStorageSync('post_collected', collectedValue)
     }
+
+    var that = this
+
+    // 微信的音乐播放总开关
+    wx.onBackgroundAudioPlay(function () {
+      that.setData({
+        playMusic : true
+      })
+    })
+
+    wx.onBackgroundAudioPause(function () {
+      that.setData({
+        playMusic: false
+      })
+    })
   },
 
   /**

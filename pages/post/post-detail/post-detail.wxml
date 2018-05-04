@@ -1,6 +1,6 @@
 <!-- 先静后动，先样式后数据 -->
 <view class='detailContainer'>
-  <image  catchtap='onHeadImageTap' data-imageInfo="{{ postData.headImgSrc }}"  class='head-image' src="{{postData.headImgSrc}}"></image>
+  <image  catchtap='onHeadImageTap' data-imageInfo="{{ postData.headImgSrc }}"  class='head-image' src="{{ playMusic? postData.music.coverImg:postData.headImgSrc}}" mode="{{ playMusic ? 'aspectFit':'' }}"></image>
   <!-- 使用数据绑定的方式切换显示的图片  -->
   <!-- 绑定动画属性  -->
   <image catchtap='onMusicTap'  animation="{{ playMusic?animationData:'' }}" class='music-icon' src="{{ playMusic? '/images/music/music-start.png': '/images/music/music-stop.png'}}"></image>
