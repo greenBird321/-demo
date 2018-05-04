@@ -5,9 +5,27 @@
     "pages/index/index",
     "pages/post/post-detail/post-detail",
     "pages/post/post-detail/post-image/post-image",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/movies/movies",
+    "pages/pusher/pusher"
   ],
   "window":{
     "navigationBarBackgroundColor": "#405f80"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/post/post",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/pusher/pusher",
+        "text": "直播串流"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影"
+      }
+    ]
   }
 }

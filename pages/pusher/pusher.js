@@ -1,5 +1,5 @@
 Page({
-  onLoad: function() {
+  onLoad: function () {
     wx.setKeepScreenOn({
       keepScreenOn: true,
     })
@@ -59,6 +59,9 @@ Page({
         console.log('switchCamera fail')
       }
     })
+  },
+  onHide: function () {
+    console.log(333);
   }
 
 })
