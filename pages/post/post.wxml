@@ -2,24 +2,24 @@
 <import src="post-item/post-item-template.wxml" />
 
 <view>
-  <swiper vertical='{{false}}' indicator-dots="true" autoplay="true" interval="5000">
+  <swiper catchtap='onSwiperTop'  vertical='{{false}}' indicator-dots="true" autoplay="true" interval="5000">
     <swiper-item>
-      <image src='/images/banner/wx.png' class='swiper-image'></image>
+      <image src='/images/banner/wx.png' class='swiper-image' data-postId='3'></image>
     </swiper-item>
 
     <swiper-item>
-      <image src='/images/banner/vr.png' class='swiper-image'></image>
+      <image src='/images/banner/vr.png' class='swiper-image' data-postId='4'></image>
     </swiper-item>
 
     <swiper-item>
-      <image src='/images/banner/iqiyi.png' class='swiper-image'></image>
+      <image src='/images/banner/iqiyi.png' class='swiper-image' data-postId='5'></image>
     </swiper-item>
   </swiper>
   <!-- block 标签并没有实际作用，相当于大括号的作用 需要把 循环的组件引起来  -->
   <!-- wx:for-item=""  指明循环的数据的子元素 -->
   <!-- wx:for-index="" 指明循环的元素index -->
   <!-- bindtap 与 catchtap 都是绑定事件， 区别 bindtap会走冒泡事件  catchtap会阻止冒泡事件 -->
-  <block wx:for="{{post_data}}" wx:for-item="item" wx:for-index='idx'>
+  <block wx:for="{{post_data}}" wx:for-item="item" wx:for-index='idx' wx:key='1'>
     <!-- data-自定义名称 可以自定义数据 传递到js中使用 -->
     <view catchtap="templateOnTap" data-postId="{{item.postId}}">
       <!-- 模板的使用 以及数据的传入 is 需要传入 就是模板的 name 属性-->

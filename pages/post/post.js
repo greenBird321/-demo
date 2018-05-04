@@ -75,5 +75,17 @@ Page({
       // 向 post-detail 传递参数 在app的url后拼接 ? xxx= 
       url: 'post-detail/post-detail?postId=' + postId,
     })
+  },
+
+  /**
+   *  点击轮播图触发方法
+   */
+  onSwiperTop: function (event) {
+    //  target 与 currentTarget 的区别 在于 target 指的是当前点击的组件，currentTarget指的是事件捕获的组件
+    //  target这里指的是 image, 而currentTarget指的是 swiper
+     var postId = event.target.dataset.postid
+     wx.navigateTo({
+       url: 'post-detail/post-detail?postId=' + postId,
+     })
   }
 })

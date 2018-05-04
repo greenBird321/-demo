@@ -33,7 +33,12 @@ App({
       }
     })
   },
+  // 全局变量 与页面的生命周期没有关系
   globalData: {
-    userInfo: null
+    userInfo: null,
+    // 根据此属性 来判别音乐是否正在播放
+    g_isPlayingMusic: false,
+    // 目前播放歌曲的id
+    g_currentMusicPostId: null
   }
 })

@@ -1,4 +1,5 @@
 var postsData = require('../../../data/posts-data.js');
+var app = getApp()
 
 Page({
 
@@ -50,19 +51,29 @@ Page({
       wx.setStorageSync('post_collected', collectedValue)
     }
 
+    if(app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postId) {
+      this.setData({
+        playMusic: true
+      })
+    }
+
     var that = this
 
     // 微信的音乐播放总开关
     wx.onBackgroundAudioPlay(function () {
       that.setData({
-        playMusic : true
+        playMusic: true
       })
+      app.globalData.g_isPlayingMusic = true
+      app.globalData.g_currentMusicPostId = postId
     })
 
     wx.onBackgroundAudioPause(function () {
       that.setData({
         playMusic: false
       })
+      app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentMusicPostId = null
     })
   },
 
@@ -190,7 +201,7 @@ Page({
         // 匀速
         timingFunction: 'linear'
       })
-      var animationIntervalId  = setInterval(function () {
+      var animationIntervalId = setInterval(function () {
         animation.rotate((++that.data.rotateCount) * 2).step()
         that.setData({
           animationData: animation.export()
@@ -199,7 +210,7 @@ Page({
       // this.animation = animation
       this.setData({
         animationIntervalId: animationIntervalId
-      })  
+      })
     }
   }
 
